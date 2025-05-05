@@ -59,3 +59,14 @@ export const getPaginatedPlaces = async (page: number) => {
   const response = await fetch(`http://localhost:4000/places?_page=${page}&_limit=5`);
   return response.json();
 };
+
+export const getPopularPlaces = async () => {
+  const res = await Axios.get('/places');
+  // Filter places where isFavorite is true
+  return res.data.filter((place: IPlace) => place.isFavorite === true);
+};
+
+export const getPopularPlacesWithError = async () => {
+  throw new Error('Popüler mekanlar yüklenirken bir hata oluştu.');
+};
+

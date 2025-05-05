@@ -2,7 +2,8 @@ import {
   useInfiniteQuery,
   useMutation,
   useQuery,
-  useQueryClient
+  useQueryClient,
+  useSuspenseQueries
 } from '@tanstack/react-query';
 
 import {
@@ -11,6 +12,7 @@ import {
   getPaginatedPlaces,
   getPlace,
   getPlaces,
+  getPopularPlaces,
   toggleFavoriteRequest
 } from '../services/mockService';
 
@@ -101,4 +103,35 @@ export const useInfinitePlaces = () => {
       return allPages.length + 1; // bir sonraki sayfa numarası
     },
   });
+};
+
+
+
+export const usePrefetchPopularPlaces = () => {
+  const queryClient = useQueryClient();
+
+  const prefetchPopularPlaces = async () => {
+    await queryClient.prefetchQuery({
+      queryKey: ["popularPlaces"],
+      queryFn: getPopularPlaces,
+      staleTime: 1000 * 60 * 5, // 5 dakika
+    });
+  };
+
+  return { prefetchPopularPlaces };
+};
+
+
+export const usePopularPlaces = () => {
+  const [{ data: popularPlaces }] = useSuspenseQueries({
+    queries: [
+      {
+        queryKey: ['popularPlaces'],
+        queryFn: getPopularPlaces,
+        staleTime: 1000 * 60 * 5, // 5 dakika boyunca bayat sayma
+      }
+    ]
+  });
+
+  return { popularPlaces };
 };

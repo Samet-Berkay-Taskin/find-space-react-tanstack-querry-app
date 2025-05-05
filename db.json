@@ -9,7 +9,8 @@
       "comments": [
         "Manzara gerçekten harikaydı!",
         "Tarih kokan bir yer, mutlaka görülmeli."
-      ]
+      ],
+      "isFavorite": true
     },
     {
       "id": "2",
@@ -22,7 +23,7 @@
         "Martılarla vapur yolculuğu çok keyifliydi.",
         "çok iyi"
       ],
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "3",
@@ -34,7 +35,7 @@
         "Balon turu unutulmazdı.",
         "Her köşesi ayrı bir masal gibi."
       ],
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "4",
@@ -46,7 +47,7 @@
         "Travertenler görsel bir şölen.",
         "Ayakkabısız yürümek değişik bir deneyim oldu :)"
       ],
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "5",
@@ -58,7 +59,7 @@
         "Tiyatroda yapılan konserin akustiği mükemmeldi!",
         "Tarihe dokunmak gibiydi."
       ],
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "6",

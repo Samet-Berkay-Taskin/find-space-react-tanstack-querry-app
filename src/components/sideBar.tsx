@@ -1,9 +1,17 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { usePrefetchPopularPlaces } from '../queries/usePlaces';
 
 const SideBar = ({ children }: { children: React.ReactNode }) => {
     const location = useLocation();
     const pathname = location.pathname;
+
+    const { prefetchPopularPlaces } = usePrefetchPopularPlaces();
+
+
+    const handleMouseEnter = () => {
+      prefetchPopularPlaces();
+    };
 
     const isActive = (path: string) => {
         if (path === '/') {
@@ -91,6 +99,27 @@ const SideBar = ({ children }: { children: React.ReactNode }) => {
                                 <span>Mekan Listesi</span>
                             </Link>
                         </li>
+                        <li
+              className={`rounded-md transition-colors ${isActive(
+                "/popular-places"
+              )}`}
+            >
+              <Link
+                to="/popular-places"
+                className="flex items-center p-2 space-x-3 rounded-md"
+                onMouseEnter={handleMouseEnter}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5 fill-current dark:text-gray-600"
+                >
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                <span>Popüler Mekanlar</span>
+              </Link>
+            </li>
                     </ul>
                 </div>
             </div>
